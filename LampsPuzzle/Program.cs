@@ -94,5 +94,10 @@ namespace LampsPuzzle
 
             return choice;
         }
+
+        /// <summary>
+        /// Method to store the state of the lamps and initialize them as off
+        /// </summary>
+        private static LampState lampState = LampState.Off;
     }
 }
