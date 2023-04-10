@@ -19,6 +19,7 @@ namespace LampsPuzzle
             {
                 int choice = SetPlayerChoice();
                 ButtonChosen(choice);
+                Console.WriteLine(LampsState());
             }
 
         }
@@ -29,7 +30,9 @@ namespace LampsPuzzle
         static void Introduction()
         {   
             // Prints the introduction of the game
-            Console.WriteLine("There are 3 lamps in a room. " +
+            Console.WriteLine("There are 3 lamps in a room " +
+            "(Represented by '0's, if a lamp is red is turned off, " +
+            "if a lamp is green is turned on)\n" +
             "You can press a button to switch the state of the lamps.\n" +
             "The first button switches the state of the first lamp.\n" +
             "The second button changes state between the first and second lamp.\n" +
@@ -169,6 +172,38 @@ namespace LampsPuzzle
             }
 
             return (int)lampState;
+        }
+
+        /// <summary>
+        /// Method that checks the state of the lamps
+        /// </summary>
+        /// <returns>The state of the lamps</returns>
+        private static string LampsState()
+        {   
+            string state = ""; // Variable to store the state of the lamps
+
+            // (We searched the web for how to use colors in the console,
+            // and we clarified it in ChatGPT)
+            if ((lampState & LampState.Lamp1On) == LampState.Lamp1On)
+                state += "\u001b[32m0 "; // '0' Green
+            else
+                state += "\u001b[31m0 "; // '0' Red
+
+            if ((lampState & LampState.Lamp2On) == LampState.Lamp2On)
+                state += "\u001b[32m0 "; // '0' Green
+            else
+                state += "\u001b[31m0 "; // '0' Red
+
+            if ((lampState & LampState.Lamp3On) == LampState.Lamp3On)
+                state += "\u001b[32m0 "; // '0' Green
+            else
+                state += "\u001b[31m0 "; // '0' Red
+
+            // Append a reset color code to ensure that the console 
+            // color is reset to the original color after the last lamp
+            state += "\u001b[0m";
+
+            return state;
         }
     }
 }
