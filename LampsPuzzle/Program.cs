@@ -17,7 +17,8 @@ namespace LampsPuzzle
             // Loop for the game
             for (int i = 0; i < numberOfPlays; i++)
             {
-                SetPlayerChoice();
+                int choice = SetPlayerChoice();
+                ButtonChosen(choice);
             }
 
         }
@@ -99,5 +100,28 @@ namespace LampsPuzzle
         /// Method to store the state of the lamps and initialize them as off
         /// </summary>
         private static LampState lampState = LampState.Off;
+
+        /// <summary>
+        /// Method that activates the button chosen by the player
+        /// </summary>
+        /// <param name="choice">Button chose by the player</param>
+        /// <returns>The state of the lamps after the player's choice</returns>
+        private static int ButtonChosen(int choice)
+        {
+            if (choice == 1) // Activate the first button
+                {
+                    // Do something
+                } 
+            else if (choice == 2) // Activate the second button
+                {   
+                    // Do something
+                }
+            else if (choice == 3) // Activate the third button
+                {
+                    // Do something
+                }
+
+            return (int)lampState;
+        }
     }
 }
