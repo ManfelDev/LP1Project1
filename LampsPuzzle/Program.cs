@@ -37,7 +37,7 @@ namespace LampsPuzzle
             "The lamps are off at the beginning.\n" +
             "You have 6 chances to press the buttons.\n" +
             "You win if all the lamps are on.\n" +
-            "You lose if you have press the buttons more than 6 times and " +
+            "You lose if you have pressed the buttons more than 6 times and " +
             "one or more lamps are still off.\n" +
             "Good luck!");
 
@@ -108,18 +108,65 @@ namespace LampsPuzzle
         /// <returns>The state of the lamps after the player's choice</returns>
         private static int ButtonChosen(int choice)
         {
-            if (choice == 1) // Activate the first button
+            if (choice == 1)
                 {
-                    // Do something
+                    ActivateButton1();
                 } 
-            else if (choice == 2) // Activate the second button
+            else if (choice == 2)
                 {   
-                    // Do something
+                    ActivateButton2();
                 }
-            else if (choice == 3) // Activate the third button
+            else if (choice == 3)
                 {
-                    // Do something
+                    ActivateButton3();
                 }
+
+            return (int)lampState;
+        }
+
+        /// <summary>
+        /// Method that changes the state of the first lamp
+        /// </summary>
+        /// <returns>The state of the lamps after the 1st button is pressed</returns>
+        private static int ActivateButton1()
+        {
+            lampState ^= LampState.Lamp1On;
+
+            return (int)lampState;
+        }
+
+        /// <summary>
+        /// Method that changes the state of the first and second lamps
+        /// </summary>
+        /// <returns>The state of the lamps after the 2nd button is pressed</returns>
+        private static int ActivateButton2()
+        {
+            if (((lampState & LampState.Lamp1On) != LampState.Lamp1On &&
+                (lampState & LampState.Lamp2On) == LampState.Lamp2On) ||
+                ((lampState & LampState.Lamp1On) == LampState.Lamp1On &&
+                (lampState & LampState.Lamp2On) != LampState.Lamp2On))
+            {
+                lampState ^= LampState.Lamp1On;
+                lampState ^= LampState.Lamp2On;
+            }
+
+            return (int)lampState;
+        }
+
+        /// <summary>
+        /// Method that changes the state of the second and third lamps
+        /// </summary>
+        /// <returns>The state of the lamps after the 3rd button is pressed</returns>
+        private static int ActivateButton3()
+        {
+            if (((lampState & LampState.Lamp2On) != LampState.Lamp2On &&
+                (lampState & LampState.Lamp3On) == LampState.Lamp3On) ||
+                ((lampState & LampState.Lamp2On) == LampState.Lamp2On &&
+                (lampState & LampState.Lamp3On) != LampState.Lamp3On))
+            {
+                lampState ^= LampState.Lamp2On;
+                lampState ^= LampState.Lamp3On;
+            }
 
             return (int)lampState;
         }
