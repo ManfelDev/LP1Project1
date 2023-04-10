@@ -15,9 +15,9 @@ namespace LampsPuzzle
             Introduction();
 
             // Loop for the game
-            for (int i = 0; i <= numberOfPlays; i++)
+            for (int i = 0; i < numberOfPlays; i++)
             {
-                break;
+                SetPlayerChoice();
             }
 
         }
@@ -55,6 +55,44 @@ namespace LampsPuzzle
             Console.ReadKey();
             // Clear the console
             Console.Clear();
+        }
+
+        /// <summary>
+        /// Method that sets and reads the player choice
+        /// </summary>
+        /// <returns>The choice of the player</returns>
+        private static int SetPlayerChoice()
+        {
+            bool isValid = false; // Variable to verify if the choice is valid
+            int choice = 0; // Variable to store the choice of the player
+
+            // While the choice is invalid
+            // (We searched the web for how to use "try" and "catch",
+            // and we clarified it in ChatGPT)
+            while (!isValid)
+            {
+                try
+                {
+                    // Prints the choice of buttons
+                    Console.WriteLine("Choose a the button (1-3)");
+                    // Reads the choice of the player
+                    choice = Convert.ToInt32(Console.ReadLine());
+                    // Verify if the choice is valid
+                    if (choice >= 1 && choice <= 3)
+                        isValid = true;
+                    // If the choice is invalid
+                    else if (choice < 1 || choice > 3)
+                        throw new FormatException();
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("\nInvalid button, please choose a " +
+                                      "right one (1, 2 or 3)!");
+                    PressAnyKeyToContinue();
+                }
+            }
+
+            return choice;
         }
     }
 }
