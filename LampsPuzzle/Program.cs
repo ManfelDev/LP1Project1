@@ -17,17 +17,17 @@ namespace LampsPuzzle
             // Loop for the game
             for (int i = 0; i < numberOfPlays; i++)
             {
-                int choice = SetPlayerChoice();
+                int choice = SetPlayerChoice(i);
                 ButtonChosen(choice);
-                Console.WriteLine(LampsState());
 
                 if (PlayerWin())
                     break; // Breaks the loop
                 
                 else if (PlayerLose(i, numberOfPlays))
                     break; // Breaks the loop
-            }
 
+                Console.Clear(); // Clear the console
+            }
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace LampsPuzzle
             "The lamps are off at the beginning.\n" +
             "You have 6 chances to press the buttons.\n" +
             "You win if all the lamps are on.\n" +
-            "You lose if you have pressed the buttons more than 6 times and " +
+            "You lose if you have pressed the buttons 6 times and " +
             "one or more lamps are still off.\n" +
             "Good luck!");
 
@@ -71,7 +71,7 @@ namespace LampsPuzzle
         /// Method that sets and reads the player choice
         /// </summary>
         /// <returns>The choice of the player</returns>
-        private static int SetPlayerChoice()
+        private static int SetPlayerChoice(int i)
         {
             bool isValid = false; // Variable to verify if the choice is valid
             int choice = 0; // Variable to store the choice of the player
@@ -83,8 +83,14 @@ namespace LampsPuzzle
             {
                 try
                 {
+                    Console.WriteLine(LampsState());
                     // Prints the choice of buttons
-                    Console.WriteLine("Choose a the button (1-3)");
+                    Console.Write("CHOOSE A BUTTON (1-3)\n" +
+                    "1. Switches the state of the first lamp\n" +
+                    "2. Changes state between the first and second lamp\n" +
+                    "3. Changes state between the second and third lamp\n" +
+                    $"\nYou have pressed a button {i} time(s)\n" +
+                    "\nSelected button: ");
                     // Reads the choice of the player
                     choice = Convert.ToInt32(Console.ReadLine());
                     // Verify if the choice is valid
@@ -207,13 +213,13 @@ namespace LampsPuzzle
 
             // Append a reset color code to ensure that the console 
             // color is reset to the original color after the last lamp
-            state += "\u001b[0m";
+            state += "\u001b[0m\n";
 
             return state;
         }
 
         /// <summary>
-        /// Method that runs if the player win
+        /// Method that runs if the player wins or not
         /// </summary>
         /// <returns>If the player wins or not</returns>
         private static bool PlayerWin()
@@ -222,6 +228,8 @@ namespace LampsPuzzle
                                LampState.Lamp2On |
                                LampState.Lamp3On)))
             {
+                Console.Clear(); // Clears the console
+                Console.WriteLine(LampsState());
                 Console.WriteLine("You win!"); // Prints the message of win
                 return true;
             }
@@ -231,7 +239,7 @@ namespace LampsPuzzle
         }
 
         /// <summary>
-        /// Method that runs if the player lose
+        /// Method that runs if the player loses or not
         /// </summary>
         /// <param name="i">Check how many buttons have the player pressed</param>
         /// <param name="numberOfPlays">The number of plays</param>
@@ -240,6 +248,8 @@ namespace LampsPuzzle
         {
             if (i == numberOfPlays - 1)
             {
+                Console.Clear(); // Clears the console
+                Console.WriteLine(LampsState());
                 Console.WriteLine("You have pressed the buttons 6 times " +
                                   "and did not complete the challenge! " +
                                   "You lost!"); // Prints the message of lose
