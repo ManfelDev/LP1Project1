@@ -3,10 +3,23 @@
 namespace LampsPuzzle
 {   
     class Program
-    {
+    {   
+        /// <summary>
+        /// Method that sets the game loop and calls the methods
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
+            int numberOfPlays = 6;
+
             Introduction();
+
+            // Loop for the game
+            for (int i = 0; i <= numberOfPlays; i++)
+            {
+                break;
+            }
+
         }
 
         /// <summary>
