@@ -10,7 +10,7 @@ namespace LampsPuzzle
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            int numberOfPlays = 6;
+            int numberOfPlays = 6; // Number of plays the player can do
 
             Introduction();
 
@@ -20,6 +20,12 @@ namespace LampsPuzzle
                 int choice = SetPlayerChoice();
                 ButtonChosen(choice);
                 Console.WriteLine(LampsState());
+
+                if (PlayerWin())
+                    break; // Breaks the loop
+                
+                else if (PlayerLose(i, numberOfPlays))
+                    break; // Breaks the loop
             }
 
         }
@@ -204,6 +210,44 @@ namespace LampsPuzzle
             state += "\u001b[0m";
 
             return state;
+        }
+
+        /// <summary>
+        /// Method that runs if the player win
+        /// </summary>
+        /// <returns>If the player wins or not</returns>
+        private static bool PlayerWin()
+        {
+            if ((lampState == (LampState.Lamp1On |
+                               LampState.Lamp2On |
+                               LampState.Lamp3On)))
+            {
+                Console.WriteLine("You win!"); // Prints the message of win
+                return true;
+            }
+
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// Method that runs if the player lose
+        /// </summary>
+        /// <param name="i">Check how many buttons have the player pressed</param>
+        /// <param name="numberOfPlays">The number of plays</param>
+        /// <returns>If the player loses or not</returns>
+        private static bool PlayerLose(int i, int numberOfPlays)
+        {
+            if (i == numberOfPlays - 1)
+            {
+                Console.WriteLine("You have pressed the buttons 6 times " +
+                                  "and did not complete the challenge! " +
+                                  "You lost!"); // Prints the message of lose
+                return true;
+            }
+
+            else
+                return false;
         }
     }
 }
