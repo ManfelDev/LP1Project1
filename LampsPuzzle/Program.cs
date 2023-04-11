@@ -124,17 +124,13 @@ namespace LampsPuzzle
         private static int ButtonChosen(int choice)
         {
             if (choice == 1)
-                {
-                    ActivateButton1();
-                } 
-            else if (choice == 2)
-                {   
-                    ActivateButton2();
-                }
+                ActivateButton1();
+
+            else if (choice == 2) 
+                ActivateButton2();
+
             else if (choice == 3)
-                {
-                    ActivateButton3();
-                }
+                ActivateButton3();
 
             return (int)lampState;
         }
@@ -151,7 +147,7 @@ namespace LampsPuzzle
         }
 
         /// <summary>
-        /// Method that changes the state of the first and second lamps
+        /// Method that changes the state between the first and second lamp
         /// </summary>
         /// <returns>The state of the lamps after the 2nd button is pressed</returns>
         private static int ActivateButton2()
@@ -169,7 +165,7 @@ namespace LampsPuzzle
         }
 
         /// <summary>
-        /// Method that changes the state of the second and third lamps
+        /// Method that changes the state between the second and third lamp
         /// </summary>
         /// <returns>The state of the lamps after the 3rd button is pressed</returns>
         private static int ActivateButton3()
@@ -219,7 +215,7 @@ namespace LampsPuzzle
         }
 
         /// <summary>
-        /// Method that runs if the player wins or not
+        /// Method that checks if the player wins or not
         /// </summary>
         /// <returns>If the player wins or not</returns>
         private static bool PlayerWin()
@@ -231,6 +227,7 @@ namespace LampsPuzzle
                 Console.Clear(); // Clears the console
                 Console.WriteLine(LampsState());
                 Console.WriteLine("You win!"); // Prints the message of win
+
                 return true;
             }
 
@@ -239,7 +236,7 @@ namespace LampsPuzzle
         }
 
         /// <summary>
-        /// Method that runs if the player loses or not
+        /// Method that checks if the player loses or not
         /// </summary>
         /// <param name="i">Check how many buttons have the player pressed</param>
         /// <param name="numberOfPlays">The number of plays</param>
@@ -253,6 +250,7 @@ namespace LampsPuzzle
                 Console.WriteLine("You have pressed the buttons 6 times " +
                                   "and did not complete the challenge! " +
                                   "You lost!"); // Prints the message of lose
+                                  
                 return true;
             }
 
