@@ -35,6 +35,8 @@ namespace LampsPuzzle
         /// </summary>
         static void Introduction()
         {   
+            Console.Clear(); // Clear the console
+
             // Prints the introduction of the game
             Console.WriteLine("There are 3 lamps in a room " +
             "(Represented by '0's, if a lamp is red is turned off, " +
