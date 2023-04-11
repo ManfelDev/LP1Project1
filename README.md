@@ -6,8 +6,8 @@ Implement Implement a system called "Puzzle das Lâmpadas"(Lamps Puzzle) in the 
 
 ## Authored by
 
-[@Rafael-j-03](https://github.com/Rafael-j-03) - Rafael José - 22202078
-[@rodgoe](https://github.com/rodgoe) - Rodrigo Gomes - 22201252
+- [@Rafael-j-03](https://github.com/Rafael-j-03) - Rafael José - 22202078
+- [@rodrigogomes01](https://github.com/rodrigogomes01) - Rodrigo Gomes - 22201252
 
 ## How our project was made
 
@@ -42,6 +42,10 @@ Implement Implement a system called "Puzzle das Lâmpadas"(Lamps Puzzle) in the 
 - 15th commit - Added .gitignore and flowchart; - Rodrigo Gomes - 22201252
 
 - 16th commit - Updated README.md; - Rodrigo Gomes - 22201252
+
+- 17th commit - Changed win message; - Rafael José - 22202078
+
+- 18th commit - Updated README.md; - Rodrigo Gomes - 22201252
 
 [Git Repository](https://github.com/Rafael-j-03/LP1Project1)
 
