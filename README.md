@@ -39,7 +39,11 @@ Implement Implement a system called "Puzzle das Lâmpadas"(Lamps Puzzle) in the 
 
 - 14th commit - Added README.md; - Rodrigo Gomes - 22201252
 
-- [Git Repository](https://github.com/Rafael-j-03/LP1Project1)
+- 15th commit - Added .gitignore and flowchart; - Rodrigo Gomes - 22201252
+
+- 16th commit - Updated README.md; - Rodrigo Gomes - 22201252
+
+[Git Repository](https://github.com/Rafael-j-03/LP1Project1)
 
 ## Development of our work
 
@@ -62,6 +66,10 @@ Implement Implement a system called "Puzzle das Lâmpadas"(Lamps Puzzle) in the 
 - We added a method that checks the state of the lamps and prints the state of each one by colors;
 
 - By the end of the game we added a method that checks if the player wins or loses, on a maximum of 6 plays and a loop break in case of victory or loss and clear the console, print the lamp states and the respective message for each case (win or lose) and then the game ends;
+
+## Flowchart
+
+![Flowchart](./flowchart.png)
 
 ## References
 
