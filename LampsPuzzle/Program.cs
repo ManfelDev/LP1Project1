@@ -20,7 +20,7 @@ namespace LampsPuzzle
                 int choice = SetPlayerChoice(i);
                 ButtonChosen(choice);
 
-                if (PlayerWin())
+                if (PlayerWin(i + 1))
                     break; // Breaks the loop
                 
                 else if (PlayerLose(i, numberOfPlays))
@@ -219,8 +219,9 @@ namespace LampsPuzzle
         /// <summary>
         /// Method that checks if the player wins or not
         /// </summary>
+        /// <param name="i">Check how many buttons have the player pressed</param>
         /// <returns>If the player wins or not</returns>
-        private static bool PlayerWin()
+        private static bool PlayerWin(int i)
         {
             if ((lampState == (LampState.Lamp1On |
                                LampState.Lamp2On |
@@ -228,7 +229,8 @@ namespace LampsPuzzle
             {
                 Console.Clear(); // Clears the console
                 Console.WriteLine(LampsState());
-                Console.WriteLine("You win!"); // Prints the message of win
+                Console.WriteLine($"You have completed the puzzle in {i} plays! " + 
+                                  "You won!"); // Prints the message of win
 
                 return true;
             }
